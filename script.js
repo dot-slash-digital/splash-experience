@@ -133,6 +133,8 @@ const PLAYER = {
     return this.x + this.w * 0.5;
   },
 
+  //
+
   place() {
     const xOffset = Math.floor(this.x / 512);
     const yOffset = Math.floor(this.y / 512);
@@ -167,7 +169,7 @@ const step = (timeStamp, then) => {
 
   positionPlayer();
 
-  console.log(PLAYER.x, PLAYER.y);
+  // console.log(PLAYER.x, PLAYER.y);
 
   // CUBE.style.transform = `rotateY(${resolveYRotation(PLAYER.x)}deg)`;
 
