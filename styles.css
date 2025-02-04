@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+  backface-visibility: hidden;
+}
+
+:root {
+  --side-length: 80;
+  --size: calc(min(1vw, 1vh) * var(--side-length));
+  --half-size: calc((var(--size) / 2) * 0.9975);
+  --outline-blur: 0.075;
+  --outline-color: #fff;
+  --outline: drop-shadow(
+    0px 0px calc(min(1vw, 1vh) * var(--outline-blur)) var(--outline-color)
+  );
+  /* drop-shadow(0 0 calc(min(1vw, 1vh) * 6) #111); */
+}
+
+html {
+  overscroll-behavior: none;
+}
+
+html,
+body {
+  background-color: #000;
+  user-select: none;
+  /* for safari */
+  -webkit-user-select: none;
+}
+
+body,
+.face {
+  contain: strict;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  height: 100dvh;
+  display: grid;
+  grid-template-columns: 1fr var(--size) 1fr;
+  grid-template-rows: 1fr var(--size) 1fr;
+  image-rendering: pixelated;
+  cursor: grab;
+}
+
+body:active {
+  cursor: grabbing;
+}
+
+#filter,
+#scene,
+#cube {
+  contain: layout;
+}
+
+#filter {
+  /* contain: strict produces a cool clipping effect; keep in mind */
+  grid-area: 2 / 2;
+  filter: var(--outline);
+  perspective: min(100vw, 100vh);
+}
+
+#scene,
+#cube,
+.face {
+  position: absolute;
+  inset: 0;
+}
+
+#scene,
+#cube {
+  transform-style: preserve-3d;
+}
+
+#scene {
+  transform: translateZ(calc(var(--half-size) * -1));
+}
+
+#cube {
+  will-change: transform;
+}
+
+.face {
+  /* background-image: url("images/test_level.webp"); */
+  background-size: cover;
+}
+
+#front {
+  transform: translateZ(var(--half-size));
+}
+
+#back {
+  transform: rotateY(180deg) translateZ(var(--half-size));
+}
+
+#right {
+  transform: rotateY(90deg) translateZ(var(--half-size));
+}
+
+#left {
+  transform: rotateY(270deg) translateZ(var(--half-size));
+}
+
+#top {
+  transform: rotateX(90deg) translateZ(var(--half-size));
+}
+
+#bottom {
+  transform: rotateX(270deg) translateZ(var(--half-size));
+}
+
+#player {
+  z-index: 1;
+  position: absolute;
+  inset: 46.875% auto auto 48.4375%;
+  width: 3.125%;
+  height: 6.25%;
+  background-color: white;
+}
