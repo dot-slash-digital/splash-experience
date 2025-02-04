@@ -138,16 +138,13 @@ const PLAYER = {
   place() {
     const xOffset = Math.floor(this.x / 512);
     const yOffset = Math.floor(this.y / 512);
-
     const transX =
       ((this.x - (256 + 512 * xOffset)) / 512) * 100 * (512 / this.w);
     const transY =
       ((this.y - (256 + 512 * yOffset)) / 512) * 100 * (512 / this.h);
-
     const YAxisRotations = xOffset * 90;
     const XAxisRotations = yOffset * -90;
-
-    this.element.style.transform = `rotateY(${YAxisRotations}deg) rotateX(${XAxisRotations}deg)  translate3d(${transX}%, ${transY}%, var(--half-size))`;
+    this.element.style.transform = `rotateY(${YAxisRotations}deg) rotateX(${XAxisRotations}deg) translate3d(${transX}%, ${transY}%, var(--half-size))`;
   },
 };
 

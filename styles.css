@@ -89,7 +89,7 @@ body:active {
 }
 
 #back {
-  transform: rotateY(180deg) translateZ(var(--half-size));
+  transform: rotateX(180deg) translateZ(var(--half-size));
 }
 
 #right {
